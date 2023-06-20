@@ -1,6 +1,6 @@
 # <h1 style="text-align:center">Alexandria</h1>
 
-<div style="text-align:center">  
+<div align="center">  
     <img src="AlexandriaSymbol.png" alt="Alexandria symbol" width="150" height="150">
     <p>
         O Alexandria é uma solução abrangente e poderosa para o gerenciamento e compartilhamento de documentos digitais. Com sua interface intuitiva, recursos avançados de busca e capacidade de categorização, ele oferece uma maneira eficiente de organizar, acessar e compartilhar uma vasta gama de materiais, tornando-se uma ferramenta valiosa para estudantes, pesquisadores e entusiastas da leitura.
