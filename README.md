@@ -28,8 +28,8 @@
     - deletar(Documento)
 
 ## Usuários Previstos
-- Usuário;
-- Administrador.
+- Leitor(sem cadastro);
+- Usuário.
 
 
 ## Tecnologias Utilizadas
