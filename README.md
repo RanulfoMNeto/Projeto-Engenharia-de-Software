@@ -54,11 +54,12 @@
         Documento <|-- Livro
         Documento <|-- Artigo
         Documento <|-- Revista
+        Documento o-- "0..*" KeyWord : Agregração
         class Documento {
+            <<abstract>>
             - id: int
             - title: String
             - author: String
-            - keywords: HashMap~Keyword~
         }
         class Livro {
             - ISBN: String
@@ -73,6 +74,9 @@
             - ISSN: String
             - volume: int
             - about: String
+        }
+        class KeyWord {
+            - name: String
         }
 
 ```
