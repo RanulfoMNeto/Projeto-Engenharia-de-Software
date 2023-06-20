@@ -7,7 +7,7 @@
     </p>
 </div>
 
-- **Integrantes**: [Ranulfo Mascari Neto](https://github.com/RanulfoMNeto), [Heitor Rodrigues Sabino](https://github.com/s4bino) e [Francisco Afonso de Oliveira Neto](https://github.com/franawp)
+- **Integrantes**: [Ranulfo Mascari Neto](https://github.com/RanulfoMNeto), [Heitor Rodrigues Sabino](https://github.com/s4bino) e [Francisco Afonso de Oliveira Neto](https://github.com/franawp).
 
 
 ## Funcionalidades
