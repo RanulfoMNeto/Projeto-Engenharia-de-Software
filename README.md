@@ -7,41 +7,44 @@
     </p>
 </div>
 
+- **Integrantes**: [Ranulfo Mascari Neto](https://github.com/RanulfoMNeto), [Heitor Rodrigues Sabino](https://github.com/s4bino) e [Francisco Afonso de Oliveira Neto](https://github.com/franawp)
+
+
 ## Funcionalidades
 
-- Usuário:
+- **Usuário**:
     - cadastrar(email/username, senha)
     - login(email/username, senha)
     - editar(Usuário)
     - deletar(Usuário)
 
-- Gerenciar Palavra-chave
+- **Gerenciar Palavra-chave**:
     - cadastrar(...)
     - visualizar(Palavra-chave)
     - editar(Palavra-chave)
     - deletar(Palavra-chave)
     
-- Gerenciar Documento
+- **Gerenciar Documento**:
     - cadastrar(..., Palavras-chave)
     - visualizar(Documento)
     - editar(Documento)
     - deletar(Documento)
 
 ## Usuários Previstos
-- Leitor(sem cadastro);
-- Usuário.
+- **Leitor**(sem cadastro);
+- **Usuário**.
 
 
 ## Tecnologias Utilizadas
 
-- Back-end:
+- **Back-end**:
     - Node JS;
     - TypeScript;
     - Express;
     - Banco de Dados:
         - MongoDB (ou MySQL).
 
-- Front-end:
+- **Front-end**:
     - HTML;
     - CSS;
     - Bootstap;
