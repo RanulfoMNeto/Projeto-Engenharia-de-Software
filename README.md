@@ -1,6 +1,6 @@
 <div align="center">  
     <h1>Alexandria</h1>
-    <img src="symbol.png" alt="Símbolo de Alexandria" width="150" height="150">
+    <img src="https://github.com/RanulfoMNeto/Projeto-Engenharia-de-Software/assets/78691159/a61979ca-e7a1-4bdb-9ca7-996f5d698b7c" alt="Símbolo de Alexandria" width="150" height="150">
     <p>
         O Alexandria é uma solução abrangente e poderosa para o gerenciamento e compartilhamento de documentos digitais. Com sua interface intuitiva, recursos avançados de busca e capacidade de categorização, ele oferece uma maneira eficiente de organizar, acessar e compartilhar uma vasta gama de materiais, tornando-se uma ferramenta valiosa para estudantes, pesquisadores e entusiastas da leitura.
     </p>
