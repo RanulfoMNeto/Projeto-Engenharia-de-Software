@@ -18,7 +18,7 @@ A convenção praticamente universal na escrita dos requisitos funcionais dos us
 
     - "**Evite as palavras**": E, OU, SOMENTE SE, EXCETO, SE NECESSÁRIO, MAS, CONTUDO, ENTRETANTO, USUALMENTE, GERALMENTE, FREQUENTEMENTE, TIPICAMENTE, AMIGÁVEL, VERSÁTIL, FLEXÍVEL, APROXIMADAMENTE, TÃO LOGO QUANTO POSSÍVEL, TALVEZ, PROVAVELMENTE ou palavras que forneçam a mesma ideia que essas.
 
-    - "**Evite frases grandes**": A especificação de requisitos deve ser feita de maneira objetiva e clara.
+    - "**Evite frases grandes**": A especificação de requisitos deve ser feita de maneira em que as frases possuam no máximo 15 palavras.
 
 ## Análise de Requisitos
 
