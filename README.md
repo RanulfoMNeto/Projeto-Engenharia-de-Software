@@ -37,48 +37,17 @@
 ## Tecnologias Utilizadas
 
 - **Back-end**:
-    - Node JS;
-    - TypeScript;
-    - Express;
-    - Banco de Dados:
-        - MongoDB (ou MySQL).
+    - Typescript: v5.1.6
+    - Node: v20.3.1
+    - Express: v4.18.2
+    - Banco de Dados
+        - MongoDB: v6.0.7
 
 - **Front-end**:
-    - HTML;
-    - CSS;
-    - Bootstap;
-    - JavaScript.
-
-## Diagrama UML
-
-```mermaid
-    classDiagram
-        Documento <|-- Livro
-        Documento <|-- Artigo
-        Documento <|-- Revista
-        Documento o-- "0..*" KeyWord : Agregração
-        class Documento {
-            <<abstract>>
-            - id: int
-            - title: String
-            - author: String
-        }
-        class Livro {
-            - ISBN: String
-            - edition: int
-            - description: String
-        }
-        class Artigo {
-            - DOI: String
-            - abstract: String
-        }
-        class Revista {
-            - ISSN: String
-            - volume: int
-            - about: String
-        }
-        class KeyWord {
-            - name: String
-        }
-
-```
+    - HTML5
+    - CSS3
+    - JavaScript
+    - Typescript: v5.1.6
+    - Next: v13.4.9
+    - React: v18.2.0
+    - Bootstrap: v5.3
