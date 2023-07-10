@@ -33,7 +33,6 @@
 - **Leitor**(sem cadastro);
 - **Usuário**.
 
-
 ## Tecnologias Utilizadas
 
 - **Back-end**:
