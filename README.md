@@ -94,11 +94,20 @@
 
 ## Práticas de Codificação
 
-- **Documentação/Comentário de Código**:
-    - É obrigatório documentar e comentar o código de forma clara e concisa. Isso inclui fornecer explicações adequadas sobre a finalidade, a lógica subjacente e o funcionamento de cada trecho de código.
+- **Comentário de Código**:
+    - Sempre adicione comentários claros e concisos para explicar o propósito, a lógica e a intenção por trás do código. Os comentários devem ajudar os outros programadores a entenderem o que o código faz, especialmente em partes complexas ou de difícil compreensão.
 
 - **Padrão de Notação de Código**:
     - É essencial adotar e seguir um padrão de notação de código consistente em todo o projeto. Isso pode incluir o uso de convenções de nomenclatura para variáveis, classes e métodos, como camelCase e garantir a clareza e a legibilidade do código.
 
 - **CLEAN CODE**:
     - O CLEAN CODE é um conjunto de diretrizes e práticas para escrever código legível, de fácil compreensão e manutenção. Isso inclui evitar duplicação de código, manter funções e classes pequenas e coesas, escolher nomes descritivos para variáveis e métodos, entre outros.
+
+- **Formatação**:
+    - Realizar a formatação do código: é uma das tarefas fundamentais e essenciais para um programador, uma vez que melhora a legibilidade e torna o código mais esteticamente agradável.
+
+- **Tratamento de Erros**:
+    - Trate erros e exceções adequadamente: Implemente tratamento de erros e exceções de forma consistente em seu código. Utilize blocos try-catch para capturar e lidar com exceções, evitando erros silenciosos e fornecendo mensagens de erro adequadas para os usuários e desenvolvedores.
+
+- **Realize testes e validações regulares**:
+    - Além dos testes automatizados, certifique-se de realizar testes manuais e validações regulares no seu código. Isso inclui a execução de cenários de teste variados, a verificação da funcionalidade em diferentes ambientes e a validação dos dados de entrada e saída. Testar e validar seu código de forma abrangente ajudará a identificar e corrigir problemas antes que eles afetem os usuários finais.
