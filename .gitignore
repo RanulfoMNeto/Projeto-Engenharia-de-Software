@@ -1,3 +1,18 @@
-.gitignore
-
+# Ignorar arquivos gerados pelo sistema operacional
 .DS_Store
+Thumbs.db
+
+# Ignorar arquivos compilados
+*.o
+*.class
+
+# Ignorar arquivos de log
+*.log
+
+# Ignorar arquivos de dependências e pacotes
+node_modules/
+vendor/
+
+# Ignorar arquivos sensíveis, como configurações
+.env
+secrets.yaml

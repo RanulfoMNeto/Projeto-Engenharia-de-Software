@@ -51,3 +51,43 @@
     - Next: v13.4.9
     - React: v18.2.0
     - Bootstrap: v5.3
+
+## Regras de Uso
+
+### Definição de Pastas
+
+- **docs**:
+    - O diretório `docs` (abreviação de "documents") é onde a documentação do software é armazenado. É nele que você encontrará detalhes sobre o processo de levantamento de requisitos, requisitos funcionais e não funcionais, padrões adotados, etc.
+        - Diagramas: O diretório `diagramas` é onde os diagramas do sistema são armazenados, sendo eles os Diagrama de Classes do domínio com relacionamentos e multiplicidade, Diagrama de Pacotes, Diagrama de Sequência e Diagrama de Implantação.
+        - Padrões Adotados: O diretório `Padrões Adotados` possui as Regras de Verificação e Analise de Requisitos.
+        - Requisitos: O diretório `Requisitos` apresenta o Documento de Requisitos, Casos de Uso, Prototipação e etc. 
+
+- **src**:
+    - O diretório `src` (abreviação de "source") é onde o código-fonte principal do software é armazenado. É nele que você encontrará os arquivos que contêm a lógica e a funcionalidade do software.
+
+### Regras de Commit
+
+- **Escreva mensagens de commit claras e concisas**:
+    - Utilize verbos no imperativo para descrever as alterações realizadas.
+    - Evite mensagens genéricas como "Correções" ou "Atualizações".
+
+- **Commits atômicos e granulares**:
+    - Realize commits pequenos e focados, que representem uma única alteração ou conjunto lógico de alterações.
+    - Evite commits muito grandes ou com alterações misturadas, pois dificultam a revisão e o entendimento das modificações realizadas.
+
+- **Faça commits frequentes e regulares**:
+    - Commits frequentes ajudam a manter um histórico claro das alterações e facilitam a resolução de problemas.
+    - Não deixe grandes períodos de tempo passarem sem realizar commits, para evitar a perda de trabalho e dificuldades na mesclagem de alterações.
+
+- **Padrão Utilizado**:
+    - `Issue #{código}: {descrição}`
+
+### Uso de Branches
+
+- **Evite trabalhar diretamente na branch principal**.
+
+- **Mantenha as branches atualizadas com o branch principal**:
+    - Antes de iniciar o trabalho em uma branch, faça o pull das últimas alterações do branch principal para evitar conflitos desnecessários.
+
+- **Faça o merge das branches após a conclusão da funcionalidade ou tarefa**:
+    - Evite fazer merges diretos na branch principal.
