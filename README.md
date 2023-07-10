@@ -91,3 +91,14 @@
 
 - **Faça o merge das branches após a conclusão da funcionalidade ou tarefa**:
     - Evite fazer merges diretos na branch principal.
+
+## Práticas de Codificação
+
+- **Documentação/Comentário de Código**:
+    - É obrigatório documentar e comentar o código de forma clara e concisa. Isso inclui fornecer explicações adequadas sobre a finalidade, a lógica subjacente e o funcionamento de cada trecho de código.
+
+- **Padrão de Notação de Código**:
+    - É essencial adotar e seguir um padrão de notação de código consistente em todo o projeto. Isso pode incluir o uso de convenções de nomenclatura para variáveis, classes e métodos, como camelCase e garantir a clareza e a legibilidade do código.
+
+- **CLEAN CODE**:
+    - O CLEAN CODE é um conjunto de diretrizes e práticas para escrever código legível, de fácil compreensão e manutenção. Isso inclui evitar duplicação de código, manter funções e classes pequenas e coesas, escolher nomes descritivos para variáveis e métodos, entre outros.
