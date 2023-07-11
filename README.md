@@ -79,7 +79,10 @@
     - Não deixe grandes períodos de tempo passarem sem realizar commits, para evitar a perda de trabalho e dificuldades na mesclagem de alterações.
 
 - **Padrão Utilizado**:
-    - `git commit -m "closes #{código}, closes #{código}, [...]: {mensagem}"`
+    - **Finalizar Issue**:
+        - `git commit -m "closes #{código}, closes #{código}, [...]: {mensagem}"`
+    - **Finalizar task da issue**:
+        - `git commit -m "#{código}: {task}, {task}, [...]"`
 
 ### Uso de Branches
 
