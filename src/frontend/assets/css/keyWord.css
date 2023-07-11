@@ -1,0 +1,249 @@
+@import url('https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
+
+*{
+  margin: 0;
+  padding: 0;
+  font-family: 'Karla', sans-serif;
+}
+
+.body{
+    background-color: #EDEDED;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+/* CARD */
+
+.container1 {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 40px;
+}
+  
+.card1 {
+    width: 400px;
+    background-color: #ffffff;
+    padding: 10px 40px 20px 40px;
+    border-radius: 20px;
+    box-shadow: 0 0 60px rgba(0, 0, 0, 0.25);
+}
+
+/*FORM: PALAVRA-CHAVE INPUT + COLOR CHANGE INPUT + BOTÃO CADASTRAR*/
+
+.color-change{
+    border-radius: 50px;
+    outline: none;
+    border: 1px solid #ccc;
+    padding: 4px 2px;
+    display: inline-block;
+    margin-left: 15%;
+}
+
+.div-kc{
+    display: flex;
+    column-gap: 30px;
+}
+
+.box-cor{
+    width: 100px;
+    height: 5px;
+    padding: 6%;
+    display: flex;
+    border-radius: 50px;
+    box-shadow: 4px 4px 20px 0px #00000035;
+    transition: all .5s ease-out;
+    margin-top: 8%;
+    margin-bottom: 8%;
+}
+
+.box-cor:hover{
+    box-shadow: 4px 4px 20px 0px #00000070;
+}
+
+.p1{
+    color:#70707090;
+}
+
+.key-input{
+    width: 100%;
+    padding: 5px 5px;
+    border: 0;
+    border-radius: 50px;
+    box-shadow: 4px 4px 20px 0px #00000035;
+    outline: none;
+    min-width: 180px;
+    font-size: 15px;
+    transition: all .5s ease-out;
+}
+
+.label-float input:hover{
+    box-shadow: 4px 4px 20px 0px #00000070;
+}
+
+.label-float{
+    margin-top: 8%;
+    margin-bottom: 3%;
+}
+
+.button{
+    width: 100%;
+    background-color: #707070;
+    border: solid;
+    border-width: 2px;
+    color: #ffffff;
+    padding: 5px 5px;
+    font-weight: lighter;
+    font-size: 18px;
+    margin-top: 12px;
+    cursor: pointer;
+    outline: none;
+    transition: all .5s ease-out;
+}
+
+.button:hover{
+    background-color: #ffffff;
+    color: #707070;
+    border-color: #707070;
+}
+
+
+
+/*BUSCA INPUT*/
+
+.busca{
+    box-shadow: 4px 4px 20px 0px #00000035;
+    transition: all .5s ease-out;
+}
+
+.busca:hover{
+    box-shadow: 4px 4px 20px 0px #00000060;
+}
+
+.input-box{
+    position: relative;
+}
+  
+.input-box i{
+    position: absolute;
+    right: 4%;
+    top: 54%;
+    color:#707070;
+}
+
+/*CAMPO DE USUÁRIO*/
+
+.campo-usuario{
+    width: 30%;
+    background: rgba(112, 112, 112, 1);
+    box-shadow: 4px 4px 20px 0px #00000035;
+    transition: all .5s ease-out;
+}
+
+.campo-usuario:hover{
+    box-shadow: 4px 4px 20px 0px #00000060;
+}
+
+.btn-campo-usu{
+    width: 100%;
+    background-color: #ffffff;
+    border: solid;
+    border-width: 1px;
+    color: #707070;
+    padding: 1px 10px;
+    font-size: 15px;
+    cursor: pointer;
+    outline: none;
+    transition: all .5s ease-out;
+}
+
+.btn-campo-usu:hover{
+    background-color: #707070;
+    color: #ffffff;
+    border-color: #ffffff;
+}
+
+.div-name{
+    color: #ffffff;
+} 
+
+.icon-user{
+    color: #ffffff;
+}
+/*CONTEÚDO DOS CAMPOS DENTRO DO CARD*/
+
+.btn-campo{
+    margin: 6px;
+}
+
+.campo-key{
+    font-size: 12px;
+    color:#363636;
+    cursor: pointer;
+}
+
+.div-cada-campo{
+    column-gap: 20px;
+    padding: 4px 10px 4px 10px;
+    background-color: #ffffff;
+    box-shadow: 4px 4px 20px 0px #00000035;
+    transition: all .5s ease-out;
+}
+
+.div-cada-campo:hover{
+    box-shadow: 4px 4px 20px 0px #00000070;
+}
+
+.icon-campos{
+    color:#363636;
+    cursor: pointer;
+    transition: all .3s ease-out;
+}
+
+.icon-campos:hover{
+    color: darkred;
+}
+
+.conteudos{
+    flex-wrap: wrap;
+    row-gap: 10px;
+    column-gap: 8px;
+    margin-bottom: 10px;
+}
+
+/*NAV BAR*/
+nav{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+.a{
+    position: relative;
+    text-decoration: none;
+    color: #707070;
+    font-size: 25px;
+    padding: 0 10px;
+    transition: all .4s ease-out;
+}
+
+.a:after{
+    content: "";
+    position: absolute;
+    background-color: #707070;
+    height: 3px;
+    width: 0;
+    left: 0;
+    bottom: -10px;
+    transition: all .4s ease-out; 
+}
+
+.a:hover{
+    color:#707070
+}
+
+.a:hover:after{
+    width: 100%;
+}
