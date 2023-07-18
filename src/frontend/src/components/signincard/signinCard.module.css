@@ -1,0 +1,33 @@
+.container {
+  background-color: #ffffff;
+  width: 500px;
+  height: 600px;
+  padding: 40px 50px 60px 50px;
+  border-radius: 20px;
+  box-shadow: 0 0 60px rgba(0, 0, 0, 0.3);
+}
+
+.errorMensage {
+  color: red;
+}
+
+.form {
+  padding-top: 25px;
+}
+
+.forgot {
+  color: rgb(55, 55, 55);
+  text-align: right;
+  padding-top: 10px;
+  padding-bottom: 20px;
+}
+
+.remember {
+  color: black;
+  font-size: 25px;
+  padding-bottom: 70px;
+}
+
+.teste {
+  color: red;
+}

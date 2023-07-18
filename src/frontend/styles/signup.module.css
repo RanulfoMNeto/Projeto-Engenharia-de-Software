@@ -1,0 +1,11 @@
+.container {
+  background-color: #c9c9c9;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.errorMenssage {
+  color: red;
+}

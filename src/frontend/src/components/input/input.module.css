@@ -1,0 +1,25 @@
+.labelFloat {
+  position: relative;
+  padding-top: 13px;
+  margin-top: 8%;
+  margin-bottom: 8%;
+}
+
+.labelFloat input{
+  background-color: white;
+  color: black;
+  width: 100%;
+  padding: 10px 20px;
+  display: inline-block;
+  border: 0;
+  border-radius: 50px;
+  box-shadow: 4px 4px 20px 0px #00000035;
+  outline: none;
+  min-width: 350px;
+  font-size: 25px;
+  transition: all .5s ease-out;
+}
+
+.labelFloat input:hover{
+  box-shadow: 4px 4px 20px 0px #00000070;
+}
