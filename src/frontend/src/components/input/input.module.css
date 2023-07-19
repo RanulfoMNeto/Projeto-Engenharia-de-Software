@@ -1,8 +1,7 @@
 .labelFloat {
   position: relative;
-  padding-top: 13px;
-  margin-top: 8%;
-  margin-bottom: 8%;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 .labelFloat input{

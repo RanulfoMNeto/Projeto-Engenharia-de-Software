@@ -30,7 +30,7 @@ export default function SigninCard ({type,onInputChanged}) {
         <form className={styles.form} onSubmit={validateInput}>
           <Input type="email" placeholder="E-mail" onChange={handleInputChanged}/>
           <Input type="password" placeholder="Password" onChange={handleInputChanged}/>
-        </form>
+        
 
         <div className={styles.forgot}>
           <Link href="forgot"> Forgot password ?</Link>
@@ -46,6 +46,8 @@ export default function SigninCard ({type,onInputChanged}) {
         </div>
 
         <Button type="submit"> {type} </Button>
+
+        </form>
 
       </div>
     </>
