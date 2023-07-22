@@ -1,0 +1,38 @@
+.campo-usuario{
+    width: 30%;
+    background: rgba(112, 112, 112, 1);
+    box-shadow: 4px 4px 20px 0px #00000035;
+    transition: all .5s ease-out;
+}
+
+.campo-usuario:hover{
+    box-shadow: 4px 4px 20px 0px #00000060;
+}
+
+.btn-campo-usu{
+    width: 100%;
+    background-color: #ffffff;
+    border: solid;
+    border-width: 1px;
+    color: #707070;
+    padding: 1px 10px;
+    font-size: 15px;
+    cursor: pointer;
+    outline: none;
+    margin: 6px;
+    transition: all .5s ease-out;
+}
+
+.btn-campo-usu:hover{
+    background-color: #707070;
+    color: #ffffff;
+    border-color: #ffffff;
+}
+
+.div-name{
+    color: #ffffff;
+} 
+
+.icon-user{
+    color: #ffffff;
+}
