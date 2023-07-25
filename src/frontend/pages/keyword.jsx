@@ -180,7 +180,6 @@ export default function Keyword() {
                                         </svg>
 
                                         
-    
                                     </div>
                                 ))}
 
