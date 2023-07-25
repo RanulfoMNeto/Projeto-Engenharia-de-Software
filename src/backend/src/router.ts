@@ -1,79 +1,55 @@
 import { Router, Response, Request } from 'express';
-import Database from './database/database';
-import addUser from './controllers/addUser';
-import {logUser,Login} from './controllers/logUser';
+import { keywordGetController, keywordPostController, keywordDeleteController } from './controllers/keywordCT';
 
 class Routes {
     private router: Router;
 
     private constructor () {
         this.router = Router();
-        this.inicializarRotas();
+        this.startRoutes();
     }
 
-    /**
-     * Construtor alternativo para evitar herança
-     * @returns Instância da classe Routes
-     */
     public static create (): Routes {
         return new Routes();
     }
 
-    /**
-     * Funcao para retornar o objeto router
-     * @returns objeto router
-     */
     public getRouter (): Router {
         return this.router;
     }
 
-    /**
-     * Método para iniciar as rotas do site
-     */
-    private inicializarRotas ():void {
-        this.router.get("/", this.rootPage);
+    private startRoutes ():void {
+        this.router.get("/", this.rootGet);
+        this.router.post("/", this.rootPost);
+        this.router.delete("/", this.rootDelete);
+
+
         this.router.post("/signin", this.signIn);
+
         this.router.post("/signup", this.signUp);
-        this.router.get("/home", this.home);
-        this.router.get("/minha-biblioteca", this.minhaBiblioteca);
-        this.router.get("/home/download", this.enviarArquivo);
+
+        this.router.post("/keyword", this.keywordPost);
+        this.router.get("/keyword", this.keywordGet);
+        this.router.delete("/keyword", this.keywordDelete);
+    } 
+
+    /* --------------------- MÉTODOS DA ROTA "/" --------------------- */
+
+    private async rootGet (req: Request, res: Response): Promise<void> {
+
     }
 
-    /**
-     * Método para enviar o arquivo PDF ao usuário
-     * @param req Requisição
-     * @param res Resposta
-     */
-    private enviarArquivo (req: Request, res: Response):void {
-        /*const identificador: number = 10;
+    private async rootPost (req: Request, res: Response): Promise<void> {
 
-        const arquivoPDF = exportarArquivo(identificador);
-
-        if (arquivoPDF == null) {
-            res.status(404).send("Arquivo não encontrado!");
-        }
-        */
-        res.send("Fazendo download do Livro");
     }
 
-    /**
-     * Método para a rota padrão "/"
-     * @param req 
-     * @param res 
-     */
-    private rootPage (req:Request, res:Response) {
-        const data = Database;
-        //data.insertExemplo();
-        //data.buscarPorNome();
-        res.send("Seja Welcomido ao site");
+    private async rootDelete (req: Request, res: Response): Promise<void> {
+
     }
 
-    /**
-     * Rota para verificar no banco de dados os dados do usuário
-     * @param req 
-     * @param res 
-     */
+    /* --------------------- MÉTODO DA ROTA "/signin" --------------------- */
+
     private async signIn (req:Request, res:Response): Promise<void> {
+        /*
         const {email,password} = req.body;
         const data = await logUser(email,password);
         
@@ -87,14 +63,13 @@ class Routes {
                 token: data.token
             });
         }
+        */
     }
 
-    /**
-     * Rota para inserir no banco de dados, os dados do usuário
-     * @param req 
-     * @param res 
-     */
+    /* --------------------- MÉTODO DA ROTA "/signup" --------------------- */
+
     private async signUp (req:Request, res:Response): Promise<void> {
+        /*
         const {name,email,password} = req.body;
         const token = await addUser(name,email,password);
 
@@ -104,24 +79,47 @@ class Routes {
 
         console.log("Token gerado com sucesso:",token)
         res.json(token);
+        */
     }
 
-    /**
-     * Rota para exibir a tela inicial do site
-     * @param req 
-     * @param res 
-     */
-    private home (req:Request, res:Response) {
-        res.send("Seja Bem-Vindo ao site");
+    /* --------------------- MÉTODOs DA ROTA "/keyword" --------------------- */
+
+    private async keywordGet (req: Request, res: Response): Promise<void> {
+        const substring = req.query.substring as string;
+        const data: [string[],string[]] = await keywordGetController(substring);
+        
+        if (data[0].length > 0) {
+            res.json({keywords:data[0], colors: data[1]});
+        }
+
+        else {
+            res.status(400).send("Dados não encontrados");
+        }
     }
 
-    /**
-     * Rota para exibir os livros do usuário
-     * @param req 
-     * @param res 
-     */
-    private minhaBiblioteca (req:Request, res:Response) {
-        res.send("Aqui está seus livros");
+    private async keywordPost (req: Request, res: Response): Promise<void> {
+        const {keyword, color} = req.body;
+        const data: boolean = await keywordPostController(keyword,color);
+
+        if (data) {
+            res.status(200).send("Inserção realizada com sucesso!");
+        }
+
+        else {
+            res.status(400).json({error: "Não foi possível inserir"});
+        }
+    }
+
+    private async keywordDelete (req: Request, res: Response): Promise<void> {
+        const {keyword} = req.body;
+        
+        if (await keywordDeleteController(keyword)) {
+            res.json("Palavra deletada com sucesso!")
+        }
+
+        else {
+            res.status(400).json("Erro ao deletar");
+        }
     }
 }
 
