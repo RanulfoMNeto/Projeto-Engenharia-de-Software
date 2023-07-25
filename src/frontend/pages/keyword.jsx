@@ -181,7 +181,7 @@ export default function Keyword() {
 
                                     </div>
                                 ))}
-
+ 
                                 {exibirConfirmacao && (
                                     <Confirmacao onConfirm={() => confirmacaoExclusao(array[indice])} onCancel={() => cancelarExclusao()} />
                                 )}  
