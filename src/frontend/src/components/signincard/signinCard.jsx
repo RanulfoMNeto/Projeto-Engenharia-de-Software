@@ -17,9 +17,7 @@ export default function SigninCard ({type,onInputChanged}) {
     onInputChanged(value)
   }
 
-  const handlePasswordChange = (value) => {
-    
-  }
+
 
   return (
     <>
@@ -33,7 +31,7 @@ export default function SigninCard ({type,onInputChanged}) {
         
 
         <div className={styles.forgot}>
-          <Link href="forgot"> Forgot password ?</Link>
+          <Link href="forgot">Forgot password?</Link>
         </div>
 
         {

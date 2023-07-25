@@ -6,8 +6,8 @@ export default function NavbarLogin () {
   return (
     <>
       <nav className={styles.nav}>
-        <Link href="signin" className={styles.a}> SIGNIN</Link>
-        <Link href="signup" className={styles.a}> SIGNUP</Link>
+        <Link href="signin" className={styles.a}>SIGN IN</Link>
+        <Link href="signup" className={styles.a}>SIGN UP</Link>
       </nav>
     </>
   )

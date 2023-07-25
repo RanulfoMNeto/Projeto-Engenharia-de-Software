@@ -1,0 +1,24 @@
+.labelFloat {
+    position: relative;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+  
+  .labelFloat textarea{
+    background-color: white;
+    color: black;
+    width: 100%;
+    height: 80px;
+    display: inline-block;
+    border: 0;
+    border-radius: 15px;
+    box-shadow: 4px 4px 20px 0px #00000035;
+    outline: none;
+    min-width: 350px;
+    font-size: 20px;
+    transition: all .5s ease-out;
+  }
+  
+  .labelFloat textarea:hover{
+    box-shadow: 4px 4px 20px 0px #00000070;
+  }

@@ -75,7 +75,7 @@ export default function SignUpCard({ type, onInputChanged }) {
           </form>
 
           <p className={styles.p1}> Already a member?
-            <a className={styles.a1} href="signin">Sign in</a>
+            <a className={styles.a1} href="signin"> Sign in</a>
           </p>
 
         </Card>
