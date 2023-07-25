@@ -60,11 +60,16 @@
 
 /*CONTENT AREA*/
 
+.contentArea{
+    position: sticky;
+    top: 0;
+}
+
 .contentContainer {
     background-color: #ffffff;
     width: 550px;
     height: 500px;
-    padding: 40px 50px 60px 50px;
+    padding: 20px 50px 60px 50px;
     border-radius: 20px;
     box-shadow: 0 0 60px rgba(0, 0, 0, 0.3);
 }
