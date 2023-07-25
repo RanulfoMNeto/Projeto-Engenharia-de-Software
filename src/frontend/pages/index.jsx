@@ -169,7 +169,7 @@ export default function Home() {
 
               <div>
                   <div>
-
+ 
                     <form>
 
                       <div className={styles.inputsAndImage}>
