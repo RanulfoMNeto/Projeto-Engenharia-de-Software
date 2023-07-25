@@ -1,5 +1,6 @@
 import express from "express";
 import { routers } from "./router";
+import { mongooseConnect } from "./database/configDB";
 const cors = require("cors");
 
 export class App {
@@ -9,6 +10,7 @@ export class App {
         this.server = express();
         this.middleware();
         this.router();
+        this.database();
     }
 
     private middleware () {
@@ -18,5 +20,9 @@ export class App {
 
     public router () {
         this.server.use(routers);
+    }
+
+    public database () {
+        mongooseConnect();
     }
 }
