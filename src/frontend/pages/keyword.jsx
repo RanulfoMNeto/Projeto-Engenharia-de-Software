@@ -14,8 +14,8 @@ import Confirmacao from '@/src/components/confirmacao/confirmacao';
 
 export default function Keyword() {
     /* ------------- VARIÁVEIS ------------- */
-    const [palavraChave, setPalavraChave] = useState('');
-    const [cor, setCor] = useState('#000000');
+    const [keyword, setKeyword] = useState('');
+    const [color, setColor] = useState('#000000');
     const [array,setArray] = useState([]);
     const [arrayCor,setArrayCor] = useState([]);
     const [exibirConfirmacao, setExibirConfirmacao] = useState(false);
@@ -27,8 +27,8 @@ export default function Keyword() {
         if (response.ok) {
             const dados = await response.json();
             
-            setArray(dados.dados);
-            setArrayCor(dados.cores);
+            setArray(dados.keywords);
+            setArrayCor(dados.colors);
             
         } 
         
@@ -43,7 +43,7 @@ export default function Keyword() {
     async function enviarRequisicao(event) {
         event.preventDefault();
 
-        if (palavraChave.length === 0) {
+        if (keyword.length === 0) {
             return;
         }
 
@@ -53,8 +53,8 @@ export default function Keyword() {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                palavraChave,
-                cor
+                keyword,
+                color
             })
         });
 
@@ -71,7 +71,7 @@ export default function Keyword() {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({
-                palavraChave: palavra,
+                keyword: palavra,
             })
         });
 
@@ -155,12 +155,12 @@ export default function Keyword() {
                             <div className={`align-items-baseline ${styles['div-kc']}`}>  
 
                                 <div className={styles.labelFloat}>
-                                    <input className={styles.keyInput} type="text" placeholder="Palavra-Chave" onChange={event => setPalavraChave(event.target.value)}/>
+                                    <input className={styles.keyInput} type="text" placeholder="Palavra-Chave" onChange={event => setKeyword(event.target.value)}/>
                                 </div>
                                 
-                                <div className={` d-flex justify-content-center align-items-center ${styles['box-cor']}`}>
+                                <div className={` d-flex justify-content-center align-items-center ${styles['box-color']}`}>
                                     <label htmlFor="color-changer" className={styles.p1}>Cor</label>
-                                    <input id="color-changer" className={styles.colorChange} type="color" onChange={event => setCor(event.target.value)}/>
+                                    <input id="color-changer" className={styles.colorChange} type="color" onChange={event => setColor(event.target.value)}/>
                                 </div>                            
                                     
                             </div>

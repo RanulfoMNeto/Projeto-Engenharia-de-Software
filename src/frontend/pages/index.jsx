@@ -1,6 +1,8 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import styles from '@/styles/Home.module.css'
 
+import { useState } from 'react';
+
 import NavBar from '@/src/components/navbar/navbar'
 import Button from '@/src/components/button/button'
 import Container from '@/src/components/container/container';
@@ -11,7 +13,26 @@ import Input from '@/src/components/input/input';
 import InputDesc from '@/src/components/InputDesc/inputDesc';
 
 export default function Home() {
+    const [title, setTitle] = useState('');
+    const [author, setAuthor] = useState('');
+    const [keyword, setKeyword] = useState('');
+    const [description, setDescription] = useState('');
+    
+  async function sendRequest (event) {
+    event.preventDefault();
+    console.log(title, author, keyword, description)
+    const response = await fetch("http://127.0.0.1:5000/", {
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({title, author, keyword, description})
+    });
 
+    if (response.ok) {
+        //buscarDados();
+    }
+}
 
 
   return (
@@ -170,24 +191,20 @@ export default function Home() {
               <div>
                   <div>
  
-                    <form>
+                    <form onSubmit={sendRequest}>
 
                       <div className={styles.inputsAndImage}>
 
                         <div>
-                          <img src="@/src/img/Image.png"/>
-                        </div>
-
-                        <div>
-                          <Input placeholder="Título do documento"/>
-                          <Input placeholder="Autor"/>
+                          <Input placeholder="Título do documento" onChange={setTitle}/>
+                          <Input placeholder="Autor" onChange={setAuthor}/>
                         </div>
 
                       </div>
 
                       <div className={`d-flex justify-content-center align-items-center ${styles['selectAndInputfile']}`}> 
 
-                        <select className={styles.selectBox} id="meuMenuSuspenso" name="meuMenuSuspenso" multiple size="1">
+                        <select className={styles.selectBox} id="meuMenuSuspenso" name="meuMenuSuspenso" multiple size="1" onChange={event => setKeyword(event.target.value)}>
                           <option value="" disabled > ▾ Assuntos </option>
                           <option value="opcao1">Engenharia de Software</option>
                           <option value="opcao2">Desenvolvimento de Software</option>
@@ -196,14 +213,14 @@ export default function Home() {
                           <option value="opcao4">Requisitos</option>
                         </select>
 
-                        <input className={styles.inputFile} type="file" placeholder='Arquivo' name="file" id="file"/>
-                        <label for="file"> Anexar Arquivo </label>
+                        <input className={styles.inputFile} type="file" disabled placeholder='Arquivo' name="file" id="file" onChange={event => setFile(event.target.value)}/>
+                        <label htmlFor="file"> Anexar Arquivo </label>
 
                       </div>
 
-                      <InputDesc placeholder="Descrição"/>
+                      <InputDesc placeholder="Descrição" onChange={setDescription}/>
 
-                      <div class={styles.remember}>      
+                      <div className={styles.remember}>      
                           <input type="checkbox" id="my-check"/>
                           <label htmlFor="my-check">Eu li e concordo com os termos de uso</label>  
                       </div>
