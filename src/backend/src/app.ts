@@ -1,7 +1,7 @@
 import express from "express";
 import { routers } from "./router";
 import { mongooseConnect } from "./database/configDB";
-const cors = require("cors");
+import cors from "cors";
 
 export class App {
     public server: express.Application;

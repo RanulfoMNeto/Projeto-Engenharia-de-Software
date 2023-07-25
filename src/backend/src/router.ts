@@ -1,12 +1,19 @@
+import multer, { Multer } from 'multer';
+import fs from 'fs';
+
 import { Router, Response, Request } from 'express';
 import { keywordGetController, keywordPostController, keywordDeleteController } from './controllers/keywordCT';
+import { rootPostController, rootGetController, rootDeleteController } from './controllers/rootCT';
+import RootReturn from './database/models/rootReturnMD';
 
 class Routes {
     private router: Router;
+    private upload: Multer;
 
     private constructor () {
         this.router = Router();
         this.startRoutes();
+        this.upload = multer({dest: 'uploads/'});
     }
 
     public static create (): Routes {
@@ -35,11 +42,63 @@ class Routes {
     /* --------------------- MÉTODOS DA ROTA "/" --------------------- */
 
     private async rootGet (req: Request, res: Response): Promise<void> {
+        const model: RootReturn = {
+            title:"",
+            author:"",
+            description:"",
+            keyword:[[],[]]
+        };
 
+        const response =  rootGetController();
+        /*
+        const data: [string[],string[]] = await rootGetController();
+        
+        if (data[0].length > 0) {
+            res.json({keywords:data[0], colors: data[1]});
+        }
+
+        else {
+            res.status(400).send("Dados não encontrados");
+        }
+        */
     }
 
     private async rootPost (req: Request, res: Response): Promise<void> {
+        if (req.body.title == undefined) {
+            console.log("undefined");
+        }
+        console.log("requisicao:", req.body);
+        const {title, keyword, author, description} = req.body;
+        const response: boolean = await rootPostController(title, keyword, author, description);
+            
+        if (response) {
+            console.log("Livro inserido com sucesso!");
+            res.json("OK");
+        }
+            
+        else {
+            res.status(400).send("Erro de inserção");
+        }
+        /*
+        console.log("AQUIIIIIIIIIIIII")
+        console.log("req.body title: ", req.body.title);
+        this.upload.single('file')(req, res, async (err) => {
+            if (err) {
+                console.log("Erro ao extrair arquivo!");
+                res.status(400).send("Erro ao extrair arquivo!");
+            }
+             
+            else {
+                if (req.file == undefined) {
+                    res.status(400).send("Nenhum arquivo recebido");
+                }
 
+                else {
+                    const fileData: Buffer = fs.readFileSync(req.file.path);
+                }
+            }
+        });
+        */
     }
 
     private async rootDelete (req: Request, res: Response): Promise<void> {

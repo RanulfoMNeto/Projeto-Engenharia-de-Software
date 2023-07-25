@@ -1,4 +1,3 @@
-import { mongooseConnect, mongooseDisconnect } from "./configDB";
 import { KeyModel } from "./models/keywordMD";
 
 export async function saveKeyword (keyword: string, color: string): Promise<boolean> {
