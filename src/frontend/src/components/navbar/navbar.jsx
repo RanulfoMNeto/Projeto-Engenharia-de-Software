@@ -7,7 +7,7 @@ export default function NavBar () {
     <>
       <nav className={styles.nav}>
 
-        <Link href="index" className={styles.a}> HOME</Link>
+        <Link href="/" className={styles.a}> HOME</Link>
         <Link href="keyword" className={styles.a}> PALAVRA-CHAVE</Link>
         <Link href="" className={styles.a}> MINHA BIBLIOTECA</Link>
 

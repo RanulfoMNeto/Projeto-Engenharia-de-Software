@@ -1,0 +1,10 @@
+.content {
+    display: flex;
+    align-items: start;
+    justify-content: center;
+}
+
+.espaco {
+    padding-left: 25px;
+    padding-right: 25px;
+}

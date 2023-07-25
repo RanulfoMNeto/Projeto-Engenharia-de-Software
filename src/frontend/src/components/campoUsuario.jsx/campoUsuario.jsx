@@ -2,7 +2,7 @@ import React from "react"
 import styles from "./campoUsuario.module.css"
 
 
-export default function CampoUsuario () {
+export default function CampoUsuario ({name}) {
 
     return(
         <>
@@ -15,7 +15,7 @@ export default function CampoUsuario () {
                         </svg>
                     </div> 
                         
-                    <div className={`align-content-center ${styles['div-name']}`}>Heitor Sabino</div>
+                    <div className={`align-content-center ${styles['div-name']}`}>{name}</div>
 
                     <div>
                         <button className={`rounded-pill align-content-center ${styles['btn-campo-usu']}`}>Log out</button>
