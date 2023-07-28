@@ -5,6 +5,8 @@ import { Router, Response, Request } from 'express';
 import { keywordGetController, keywordPostController, keywordDeleteController } from './controllers/keywordCT';
 import { rootPostController, rootGetController, rootDeleteController } from './controllers/rootCT';
 import RootReturn from './database/models/rootReturnMD';
+import signupController from './controllers/signupCT';
+import signinController from './controllers/signinCT';
 
 class Routes {
     private router: Router;
@@ -108,37 +110,44 @@ class Routes {
     /* --------------------- MÉTODO DA ROTA "/signin" --------------------- */
 
     private async signIn (req:Request, res:Response): Promise<void> {
-        /*
         const {email,password} = req.body;
-        const data = await logUser(email,password);
         
-        if (data.error != "") {
-            res.status(400).json({error: data.error});
+        if (!email || !password) {
+            res.status(400).json({msg:"Dados incompletos"});
         }
-        
+
         else {
-            res.json({
-                name: data.name, 
-                token: data.token
-            });
+            const {name,token} = await signinController(email,password);
+
+            if (!name || !token) {
+                res.status(400).json({msg:"Erro"});
+            }
+
+            else {
+                res.status(200).json({name,token});
+            }
         }
-        */
+        
     }
 
     /* --------------------- MÉTODO DA ROTA "/signup" --------------------- */
 
     private async signUp (req:Request, res:Response): Promise<void> {
-        /*
         const {name,email,password} = req.body;
-        const token = await addUser(name,email,password);
 
-        if (token === "Error") {
-            res.status(400).json({error:"Falha ao cadastrar"})
+        if (!name || !email || !password) {
+            res.status(400).json({msg:" Dados incompletos!"});
         }
+        
+        else {
+            if (await signupController(name,email,password)) {
+                res.status(200).json({msg: "usuario cadastrado com sucesso!"});
+            }
 
-        console.log("Token gerado com sucesso:",token)
-        res.json(token);
-        */
+            else {
+                res.status(401).json({msg: "Ocorreu um erro no servidor!"});
+            }
+        }
     }
 
     /* --------------------- MÉTODOs DA ROTA "/keyword" --------------------- */

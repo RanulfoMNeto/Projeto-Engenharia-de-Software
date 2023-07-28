@@ -12,11 +12,13 @@ export default function SignUpCard({ type, onInputChanged }) {
     const [nameIsValid, setNameIsValid] = useState(false);
     const [emailIsValid, setEmailIsValid] = useState(false);
     const [passwordIsValid, setPasswordIsValid] = useState(false);
+    const [password, setPassword] = useState('');
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
 
   const validateInput = (event) => {
     event.preventDefault();
-    console.log("Submetido");
-    /* continuação */
+    onInputChanged(name,email,password);
   }
 
   const handleNameChanged = (value) => {
@@ -24,6 +26,7 @@ export default function SignUpCard({ type, onInputChanged }) {
     if (value.length >= 3 && value.match(letters)) {
       // Permitir a entrada
       setNameIsValid(false);
+      setName(value);
     } else {
       // Impedir a entrada
       setNameIsValid(true);
@@ -35,6 +38,7 @@ export default function SignUpCard({ type, onInputChanged }) {
     if (value.match(emailRegex)) {
       // Permitir a entrada
       setEmailIsValid(false);
+      setEmail(value);
     } else {
       // Impedir a entrada
       setEmailIsValid(true);
@@ -45,6 +49,7 @@ export default function SignUpCard({ type, onInputChanged }) {
     if (value.length >= 6) {
       // Permitir a entrada
       setPasswordIsValid(false);
+      setPassword(value);
     } else {
       // Impedir a entrada
       setPasswordIsValid(true);

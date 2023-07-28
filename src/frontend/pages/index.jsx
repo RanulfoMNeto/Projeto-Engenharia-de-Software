@@ -42,7 +42,7 @@ export default function Home() {
       <Container>
         <div style={{ display: "flex", justifyContent: "space-between" }}>
           <div style={{ flexGrow: 1 }}></div>
-          <CampoUsuario name="Francisco" />
+          <CampoUsuario name="Clique para fazer login"/>
         </div>
         
         <Search/>
@@ -398,53 +398,6 @@ export default function Home() {
 
             <div className={`  ${styles['contentContainer']}`}>
               <ContentArea/>
-
-              <div>
-                  <div>
- 
-                    <form>
-
-                      <div className={styles.inputsAndImage}>
-
-                        <div>
-                          <Input placeholder="Título do documento" onChange={setTitle}/>
-                          <Input placeholder="Autor" onChange={setAuthor}/>
-                        </div>
-
-                      </div>
-
-                      <div className={`d-flex justify-content-center align-items-center ${styles['selectAndInputfile']}`}> 
-
-                        <select className={styles.selectBox} id="meuMenuSuspenso" name="meuMenuSuspenso" multiple size="1">
-                          <option value="" disabled > ▾ Assuntos </option>
-                          <option value="Engenharia de Software">Engenharia de Software</option>
-                          <option value="Desenvolvimento de Software">Desenvolvimento de Software</option>
-                          <option value="Teste de Software">Teste de Software</option>
-                          <option value="Metodologias">Metodologias</option>
-                          <option value="Requisitos">Requisitos</option>
-                        </select>
-
-                        <input className={styles.inputFile} type="file" placeholder='Arquivo' name="file" id="file"/>
-                        <label for="file"> Anexar Arquivo </label>
-
-                      </div>
-
-                      <InputDesc placeholder="Descrição"/>
-
-                      <div class={styles.remember}>      
-                          <input type="checkbox" id="my-check"/>
-                          <label htmlFor="my-check">Eu li e concordo com os termos de uso</label>  
-                      </div>
-
-                      <Button>CADASTRAR</Button>
-
-                    </form>
-                    
-                  </div>
-
-
-              </div>
-
             </div>
 
           </div>

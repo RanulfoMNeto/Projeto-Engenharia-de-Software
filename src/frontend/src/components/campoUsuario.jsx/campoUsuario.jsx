@@ -1,5 +1,6 @@
 import React from "react"
 import styles from "./campoUsuario.module.css"
+import Link from "next/link"
 
 
 export default function CampoUsuario ({name}) {
@@ -18,7 +19,9 @@ export default function CampoUsuario ({name}) {
                     <div className={`align-content-center ${styles['div-name']}`}>{name}</div>
 
                     <div>
-                        <button className={`rounded-pill align-content-center ${styles['btn-campo-usu']}`}>Log out</button>
+                        <Link href={"signin"}>
+                            <button className={`rounded-pill align-content-center ${styles['btn-campo-usu']}`}> Login </button>
+                        </Link>
                     </div>
                         
                 </div>
