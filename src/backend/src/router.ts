@@ -2,7 +2,7 @@ import multer, { Multer } from 'multer';
 import fs from 'fs';
 
 import { Router, Response, Request } from 'express';
-import { keywordGetController, keywordPostController, keywordDeleteController } from './controllers/keywordCT';
+import { keywordGetController, keywordPostController, keywordDeleteController, keywordPutController } from './controllers/keywordCT';
 import { rootPostController, rootGetController, rootDeleteController } from './controllers/rootCT';
 import RootReturn from './database/models/rootReturnMD';
 import signupController from './controllers/signupCT';
@@ -39,37 +39,25 @@ class Routes {
         this.router.post("/keyword", this.keywordPost);
         this.router.get("/keyword", this.keywordGet);
         this.router.delete("/keyword", this.keywordDelete);
+        this.router.put("/keyword", this.keywordPut);
     } 
 
     /* --------------------- MÉTODOS DA ROTA "/" --------------------- */
 
     private async rootGet (req: Request, res: Response): Promise<void> {
-        const model: RootReturn = {
-            title:"",
-            author:"",
-            description:"",
-            keyword:[[],[]]
-        };
-
-        const response =  rootGetController();
-        /*
-        const data: [string[],string[]] = await rootGetController();
+        const response =  await rootGetController();
         
-        if (data[0].length > 0) {
-            res.json({keywords:data[0], colors: data[1]});
+        if (response) {
+            //console.log("Modelo da resposta enviada: ", response[0]);
+            res.json(response);
         }
 
         else {
-            res.status(400).send("Dados não encontrados");
+            res.status(400).json({msg:"error"});
         }
-        */
     }
 
     private async rootPost (req: Request, res: Response): Promise<void> {
-        if (req.body.title == undefined) {
-            console.log("undefined");
-        }
-        console.log("requisicao:", req.body);
         const {title, keyword, author, description} = req.body;
         const response: boolean = await rootPostController(title, keyword, author, description);
             
@@ -81,30 +69,18 @@ class Routes {
         else {
             res.status(400).send("Erro de inserção");
         }
-        /*
-        console.log("AQUIIIIIIIIIIIII")
-        console.log("req.body title: ", req.body.title);
-        this.upload.single('file')(req, res, async (err) => {
-            if (err) {
-                console.log("Erro ao extrair arquivo!");
-                res.status(400).send("Erro ao extrair arquivo!");
-            }
-             
-            else {
-                if (req.file == undefined) {
-                    res.status(400).send("Nenhum arquivo recebido");
-                }
-
-                else {
-                    const fileData: Buffer = fs.readFileSync(req.file.path);
-                }
-            }
-        });
-        */
     }
 
     private async rootDelete (req: Request, res: Response): Promise<void> {
+        const {title} = req.body;
 
+        if (await rootDeleteController(title)) {
+            res.json({msg:"OK"});
+        }
+
+        else {
+            res.status(400).json({msg:"Falha ao deletar"});
+        }
     }
 
     /* --------------------- MÉTODO DA ROTA "/signin" --------------------- */
@@ -187,6 +163,19 @@ class Routes {
 
         else {
             res.status(400).json("Erro ao deletar");
+        }
+    }
+
+    private async keywordPut (req: Request, res: Response): Promise<void> {
+        const oldKeyword = req.query.substring as string;
+        const newKeyword = req.body.keyword;
+        
+        if (await keywordPutController(oldKeyword,newKeyword)) {
+            res.json({msg:"ok"});
+        }
+
+        else {
+            res.status(400).json({msg:"Erro ao atualizar"});
         }
     }
 }

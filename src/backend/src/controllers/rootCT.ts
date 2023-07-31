@@ -4,7 +4,7 @@ export function rootGetController () {
     return findBook();
 }
 
-export function rootPostController (title: string, keyword: string, author: string, description: string): Promise<boolean> {
+export function rootPostController (title: string, keyword: string[], author: string, description: string): Promise<boolean> {
     return saveBook(title, keyword, author , description);
 }
 

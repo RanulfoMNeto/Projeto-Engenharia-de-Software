@@ -10,6 +10,8 @@ import Search from '@/src/components/search/search';
 import Button from '@/src/components/button/button';
 import { useEffect, useState } from 'react';
 import Confirmacao from '@/src/components/confirmacao/confirmacao';
+import Modal from 'react-bootstrap/Modal';
+import Form from 'react-bootstrap/Form';
 
 
 export default function Keyword() {
@@ -20,6 +22,8 @@ export default function Keyword() {
     const [arrayCor,setArrayCor] = useState([]);
     const [exibirConfirmacao, setExibirConfirmacao] = useState(false);
     const [indice,setIndice] = useState(0);
+    const [newKeyword, setNewKeyword] = useState('');
+    const [showUpdateModal, setShowUpdateModal] = useState(false);
 
     /* ------------- MÉTODO HTTP GET ------------- */
     async function buscarDados(substring = "") {
@@ -85,6 +89,29 @@ export default function Keyword() {
         }
     }
 
+     /* ------------- MÉTODO HTTP PUT ------------- */
+     async function atualizarKeyword(index, newKeyword) {
+        const oldKeyword = array[index];
+        const response = await fetch(`http://127.0.0.1:5000/keyword?substring=${encodeURIComponent(oldKeyword)}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                keyword: newKeyword,
+            })
+        });
+
+        if (response.ok) {
+            return true;
+        } 
+
+        else {
+            console.log("Erro ao atualizar item:", response.status, response.statusText);
+            return false;
+        }
+    }
+
     /* ------------- FUNÇÕES AUXILIARES MÉTODO DELETE ------------- */
     function excluir(i) {
         setIndice(i);
@@ -101,6 +128,23 @@ export default function Keyword() {
     
     function cancelarExclusao() {
         setExibirConfirmacao(false);
+    }
+
+    /* ------------- FUNÇÕES AUXILIARES MÉTODO UPDATE ------------- */
+    function abrirModalUpdate(i) {
+        setIndice(i);
+        setShowUpdateModal(true);
+    }
+
+    async function confirmarUpdate() {
+        if (await atualizarKeyword(indice, newKeyword)) {
+            await buscarDados();
+        }
+        setShowUpdateModal(false);
+    }
+
+    function cancelarUpdate() {
+        setShowUpdateModal(false);
     }
 
     /* ------------- CARREGANDO DADOS DO SERVIDOR ------------- */
@@ -168,15 +212,14 @@ export default function Keyword() {
                             {/* <!-- CONTEUDOS DAS PALAVRAS-CHAVE --> */}
                             <div className={`d-flex ${styles['conteudos']}`}>
                                 {[...Array(array.length)].map((_, i) => (
-                                    <div key={i} className={`rounded-pill d-flex ${styles['div-cada-campo']}`} style={{ backgroundColor: arrayCor[i]}}> 
+                                    <div key={i} className={`rounded-pill d-flex ${styles['div-cada-campo']}`} style={{ backgroundColor: arrayCor[i]}} onClick={() => abrirModalUpdate(i)}>
 
                                         <div className={`border-0 bg-transparent ${styles['campo-key']}`} style ={{color: getTextColor(arrayCor[i])}}>  
                                             {array[i]}
                                         </div>
-     
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className={`bi bi-trash3 ${styles['icon-campos']}`} viewBox="0 0 16 16" onClick={() => excluir(i)} style ={{color: getTextColor(arrayCor[i])}}>
+    
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className={`bi bi-trash3 ${styles['icon-campos']}`} viewBox="0 0 16 16" onClick={(e) => {e.stopPropagation(); excluir(i);}} style ={{color: getTextColor(arrayCor[i])}}>
                                             <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z"/>
-
                                         </svg>
 
                                     </div>
@@ -184,7 +227,31 @@ export default function Keyword() {
  
                                 {exibirConfirmacao && (
                                     <Confirmacao onConfirm={() => confirmacaoExclusao(array[indice])} onCancel={() => cancelarExclusao()} />
-                                )}  
+                                )}
+
+                                {showUpdateModal && (
+                                    <Modal show={showUpdateModal} onHide={cancelarUpdate}>
+                                        <Modal.Header closeButton>
+                                            <Modal.Title>Update Keyword</Modal.Title>
+                                        </Modal.Header>
+                                        <Modal.Body>
+                                            <Form>
+                                                <Form.Group controlId="formBasicEmail">
+                                                    <Form.Label>New Keyword</Form.Label>
+                                                    <Form.Control type="text" defaultValue={array[indice]} placeholder="Enter new keyword" onChange={event => setNewKeyword(event.target.value)} />
+                                                </Form.Group>
+                                            </Form>
+                                        </Modal.Body>
+                                        <Modal.Footer>
+                                            <Button variant="secondary" onClick={cancelarUpdate}>
+                                                Close
+                                            </Button>
+                                            <Button variant="primary" onClick={confirmarUpdate}>
+                                                Save
+                                            </Button>
+                                        </Modal.Footer>
+                                    </Modal>
+                                )}
 
                             </div>
 

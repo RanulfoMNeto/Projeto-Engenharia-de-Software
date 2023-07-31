@@ -25,6 +25,16 @@
     align-items: flex-start;
 }
 
+.documentTrashIcon{
+    color:#363636;
+    cursor: pointer;
+    transition: all .3s ease-out;
+}
+
+.documentTrashIcon:hover{
+    color: darkred;
+}
+
 .keyWordContainer{
     flex-wrap: wrap;
     row-gap: 10px;

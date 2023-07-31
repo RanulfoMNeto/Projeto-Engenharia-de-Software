@@ -60,3 +60,9 @@ export async function deleteKeyword (keyword: string): Promise<boolean> {
         return false;
     }
 }
+
+export async function putKeyword (oldKeyword: string, newKeyword: String): Promise<boolean> {
+    const data = await KeyModel.findOneAndUpdate({keyword:oldKeyword},{keyword:newKeyword},{new:true})
+    console.log("Dados atualizados:/n", data);
+    return true;
+}

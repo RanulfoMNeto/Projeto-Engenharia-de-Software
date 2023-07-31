@@ -1,11 +1,10 @@
 import { findKeyword } from "./keywordDB";
 import { BookModel } from "./models/bookMD";
-import RootReturn from "./models/rootReturnMD";
 
-export async function saveBook (title: string, keyword: string, author: string, description: string): Promise<boolean> {
+export async function saveBook (title: string, keyword: string[], author: string, description: string): Promise<boolean> {
     try {
         const book = new BookModel ({title, keyword, author, description});
-        const response = await book.save();
+        await book.save();
         console.log("Livro cadastrado com sucesso!");
         return true;
     }
@@ -18,48 +17,25 @@ export async function saveBook (title: string, keyword: string, author: string, 
 
 export async function findBook () {
     try {
-        const vectorResponse: RootReturn[] = [];
-
-        let response: RootReturn = {
-            title: "",
-            author: "",
-            description: "",
-            keyword:[[],[]]
-        }
-
         const data = await BookModel.find();
+        const vectorResponse: any[] = [];
 
-        const vectorTitle = [...data.map(doc => doc.title)];
-        const vectorAuthor = [...data.map(doc => doc.author)];
-        const vectorDescription = [...data.map(doc => doc.description)];
-        const vectorKeyword = [...data.map(doc => doc.keyword)];
+        for (const book of data) {
+            const { title, keyword, author, description } = book;
+            let keywordVector: any[] = [];
 
-        for (let i=0; i<vectorTitle.length; i++) {
-            response.title = vectorTitle[i];
-            response.author = vectorAuthor[i];
-            response.description = vectorDescription[i];
-
-            let keys: string[] = [];
-            let colors: string [] = [];
+            keywordVector = await Promise.all(keyword.map(findKeyword));
             
-            for (let j=0; j<vectorKeyword[i].length; i++) {
-                let resp = await findKeyword(vectorKeyword[i][j]);
-                keys = resp[0];
-                colors = resp[1];
-            }
-            
-            response.keyword = [keys,colors];
+            vectorResponse.push({ title, keyword: keywordVector, author, description });
         }
-        
 
-        console.log(data);
-        return data;
+        return vectorResponse;
     }
-
     catch (error) {
-        console.log("Erro ao recuperar palavras chave", error);
+        console.error("Erro ao recuperar livros", error);
     }
 }
+
 
 export async function deleteBook (title: string): Promise<boolean> {
     try {
@@ -75,7 +51,6 @@ export async function deleteBook (title: string): Promise<boolean> {
         }
 
         else {
-
             throw("Erro ao deletar");
         }
     }
